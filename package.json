@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build:token": "rm -rf build && ts-node src/build.ts && yarn tsc",
+    "build:token": "rm -rf build && ts-node src/lib/tokens/build.ts && yarn tsc",
     "copy:token-types": "npx copyfiles -u 1 \"src/**/*.d.ts\" build"
   },
   "dependencies": {
