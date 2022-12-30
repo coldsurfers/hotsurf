@@ -1,10 +1,10 @@
-import {variables} from '@fstvllife/design-token';
-import React, {memo, useCallback, useState} from 'react';
+import { variables } from "lib/tokens/ts/variables";
+import React, { memo, useCallback, useState } from "react";
 import {
   StyleSheet,
   TextInput as RNTextInput,
   TextInputProps,
-} from 'react-native';
+} from "react-native";
 
 interface Props extends TextInputProps {}
 
@@ -18,7 +18,7 @@ const TextInput = (props: Props) => {
   }, []);
   return (
     <RNTextInput
-      placeholderTextColor={'#b0b6b7'}
+      placeholderTextColor={"#b0b6b7"}
       onFocus={onFocus}
       onBlur={onBlur}
       {...props}
@@ -26,7 +26,7 @@ const TextInput = (props: Props) => {
         props.style,
         styles.textInput,
         focused && styles.focused,
-        typeof props.editable === 'boolean' &&
+        typeof props.editable === "boolean" &&
           !props.editable &&
           styles.disabled,
       ]}
@@ -36,7 +36,7 @@ const TextInput = (props: Props) => {
 
 const styles = StyleSheet.create({
   textInput: {
-    borderColor: '#b0b6b7',
+    borderColor: "#b0b6b7",
     borderWidth: 2,
     borderRadius: 24,
     paddingLeft: 16,
@@ -46,10 +46,10 @@ const styles = StyleSheet.create({
     backgroundColor: variables.palette.white,
   },
   focused: {
-    borderColor: '#595b5b',
+    borderColor: "#595b5b",
   },
   disabled: {
-    backgroundColor: '#f4eded',
+    backgroundColor: "#f4eded",
   },
 });
 

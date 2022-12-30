@@ -1,9 +1,9 @@
-import {variables} from '@fstvllife/design-token';
-import {StyleSheet} from 'react-native';
+import { variables } from "@fstvllife/design-token";
+import { StyleSheet } from "react-native";
 
 export const buttonBackgroundColorStyles = StyleSheet.create({
   transparent: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
   transparentDarkGray: {
     backgroundColor: variables.palette.black,

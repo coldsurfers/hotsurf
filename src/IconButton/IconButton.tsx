@@ -1,14 +1,19 @@
-import React, {memo} from 'react';
-import {StyleProp, StyleSheet, TouchableOpacity, ViewStyle} from 'react-native';
-import {ButtonColorProp} from '../types/button';
-import {variables} from '@fstvllife/design-token';
-import {Text} from '../Text';
-import {buttonBackgroundColorStyles} from '../lib/styles';
+import React, { memo } from "react";
+import {
+  StyleProp,
+  StyleSheet,
+  TouchableOpacity,
+  ViewStyle,
+} from "react-native";
+import { variables } from "lib/tokens/ts/variables";
+import { ButtonColorProp } from "../types/button";
+import { Text } from "../Text";
+import { buttonBackgroundColorStyles } from "../lib/styles";
 
 interface Props {
   onPress: () => void;
-  icon: '←' | '✘';
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  icon: "←" | "✘";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   color?: ButtonColorProp;
   style?: StyleProp<ViewStyle>;
 }
@@ -16,18 +21,17 @@ interface Props {
 const IconButton = ({
   icon,
   onPress,
-  color = 'transparent',
-  size = 'md',
+  color = "transparent",
+  size = "md",
   style,
-}: Props) => {
-  return (
-    <TouchableOpacity
-      style={[sizeStyles[size], buttonBackgroundColorStyles[color], style]}
-      onPress={onPress}>
-      <Text style={baseStyles.text}>{icon}</Text>
-    </TouchableOpacity>
-  );
-};
+}: Props) => (
+  <TouchableOpacity
+    style={[sizeStyles[size], buttonBackgroundColorStyles[color], style]}
+    onPress={onPress}
+  >
+    <Text style={baseStyles.text}>{icon}</Text>
+  </TouchableOpacity>
+);
 
 const sizeStyles = StyleSheet.create({
   xs: {
@@ -62,8 +66,8 @@ const baseStyles = StyleSheet.create({
     color: variables.palette.white,
     fontSize: 20,
     lineHeight: 28,
-    fontWeight: '700',
-    textAlign: 'center',
+    fontWeight: "700",
+    textAlign: "center",
   },
 });
 

@@ -1,15 +1,15 @@
-import {variables} from '@fstvllife/design-token';
-import React, {memo, useEffect, useRef, useState} from 'react';
-import {Animated, Pressable, StyleSheet} from 'react-native';
-import {Text} from '../Text';
+import { variables } from "@fstvllife/design-token";
+import React, { memo, useEffect, useRef, useState } from "react";
+import { Animated, Pressable, StyleSheet } from "react-native";
+import { Text } from "../Text";
 
 interface Props {
-  type: 'info' | 'warning' | 'error';
+  type: "info" | "warning" | "error";
   message: string;
   visible: boolean;
 }
 
-const Toast = ({type, message, visible}: Props) => {
+const Toast = ({ type, message, visible }: Props) => {
   const wrapperAnimationValue = useRef(new Animated.Value(56)).current;
   const [localVisible, setLocalVisible] = useState<boolean>(false);
 
@@ -50,10 +50,12 @@ const Toast = ({type, message, visible}: Props) => {
             },
           ],
         },
-      ]}>
+      ]}
+    >
       <Pressable
         onPress={() => {}}
-        style={[backgroundColorStyles[type], baseStyles.button]}>
+        style={[backgroundColorStyles[type], baseStyles.button]}
+      >
         <Text style={[baseStyles.text, textColorStyles[type]]}>{message}</Text>
       </Pressable>
     </Animated.View>
@@ -62,16 +64,16 @@ const Toast = ({type, message, visible}: Props) => {
 
 const baseStyles = StyleSheet.create({
   wrapper: {
-    position: 'absolute',
+    position: "absolute",
     bottom: -56,
     left: 0,
     right: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "transparent",
   },
   text: {
-    fontWeight: '700',
+    fontWeight: "700",
     color: variables.palette.white,
   },
   button: {
