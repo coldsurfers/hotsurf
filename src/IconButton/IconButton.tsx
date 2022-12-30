@@ -1,28 +1,28 @@
-import React, { memo } from "react";
+import React, { memo } from 'react'
 import {
   StyleProp,
   StyleSheet,
   TouchableOpacity,
   ViewStyle,
-} from "react-native";
-import { variables } from "lib/tokens/ts/variables";
-import { ButtonColorProp } from "../types/button";
-import { Text } from "../Text";
-import { buttonBackgroundColorStyles } from "../lib/styles";
+} from 'react-native'
+import { variables } from 'lib/tokens/ts/variables'
+import { ButtonColorProp } from '../types/button'
+import { Text } from '../Text'
+import { buttonBackgroundColorStyles } from '../lib/styles'
 
 interface Props {
-  onPress: () => void;
-  icon: "←" | "✘";
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
-  color?: ButtonColorProp;
-  style?: StyleProp<ViewStyle>;
+  onPress: () => void
+  icon: '←' | '✘'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  color?: ButtonColorProp
+  style?: StyleProp<ViewStyle>
 }
 
 const IconButton = ({
   icon,
   onPress,
-  color = "transparent",
-  size = "md",
+  color = 'transparent',
+  size = 'md',
   style,
 }: Props) => (
   <TouchableOpacity
@@ -31,7 +31,7 @@ const IconButton = ({
   >
     <Text style={baseStyles.text}>{icon}</Text>
   </TouchableOpacity>
-);
+)
 
 const sizeStyles = StyleSheet.create({
   xs: {
@@ -59,16 +59,16 @@ const sizeStyles = StyleSheet.create({
     height: 36,
     borderRadius: 18,
   },
-});
+})
 
 const baseStyles = StyleSheet.create({
   text: {
     color: variables.palette.white,
     fontSize: 20,
     lineHeight: 28,
-    fontWeight: "700",
-    textAlign: "center",
+    fontWeight: '700',
+    textAlign: 'center',
   },
-});
+})
 
-export default memo(IconButton);
+export default memo(IconButton)

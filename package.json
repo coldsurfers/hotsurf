@@ -4,13 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "build:token": "ts-node src/lib/token-builder/build.ts",
     "lint": "eslint --cache \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "yarn lint --fix",
     "prepare": "husky install"
   },
   "dependencies": {
-    "@react-native-community/eslint-config": "^3.1.0",
     "react": "18.2.0",
     "style-dictionary": "^3.7.1",
     "typescript": "^4.8.3"
@@ -29,10 +29,12 @@
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.0",
     "lint-staged": "^13.1.0",
-    "prettier": "^2.7.1",
+    "prettier": "2.8.1",
     "react-native": "^0.70.6",
     "rollup": "^2.78.0",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0"
   },
   "peerDependencies": {
     "react": ">= 18.2.0",

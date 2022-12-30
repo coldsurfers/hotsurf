@@ -1,17 +1,17 @@
-import { variables } from "lib/tokens/ts/variables";
-import React, { memo, useEffect, useRef, useState } from "react";
-import { Animated, Pressable, StyleSheet } from "react-native";
-import { Text } from "../Text";
+import { variables } from 'lib/tokens/ts/variables'
+import React, { memo, useEffect, useRef, useState } from 'react'
+import { Animated, Pressable, StyleSheet } from 'react-native'
+import { Text } from '../Text'
 
 interface Props {
-  type: "info" | "warning" | "error";
-  message: string;
-  visible: boolean;
+  type: 'info' | 'warning' | 'error'
+  message: string
+  visible: boolean
 }
 
 const Toast = ({ type, message, visible }: Props) => {
-  const wrapperAnimationValue = useRef(new Animated.Value(56)).current;
-  const [localVisible, setLocalVisible] = useState<boolean>(false);
+  const wrapperAnimationValue = useRef(new Animated.Value(56)).current
+  const [localVisible, setLocalVisible] = useState<boolean>(false)
 
   useEffect(() => {
     if (visible) {
@@ -20,8 +20,8 @@ const Toast = ({ type, message, visible }: Props) => {
         duration: 600,
         useNativeDriver: false,
       }).start(() => {
-        setLocalVisible(true);
-      });
+        setLocalVisible(true)
+      })
     } else {
       Animated.timing(wrapperAnimationValue, {
         toValue: 56,
@@ -29,14 +29,14 @@ const Toast = ({ type, message, visible }: Props) => {
         useNativeDriver: false,
       }).start(() => {
         setTimeout(() => {
-          setLocalVisible(false);
-        }, 600);
-      });
+          setLocalVisible(false)
+        }, 600)
+      })
     }
-  }, [visible, wrapperAnimationValue]);
+  }, [visible, wrapperAnimationValue])
 
   if (!localVisible && !visible) {
-    return null;
+    return null
   }
 
   return (
@@ -59,21 +59,21 @@ const Toast = ({ type, message, visible }: Props) => {
         <Text style={[baseStyles.text, textColorStyles[type]]}>{message}</Text>
       </Pressable>
     </Animated.View>
-  );
-};
+  )
+}
 
 const baseStyles = StyleSheet.create({
   wrapper: {
-    position: "absolute",
+    position: 'absolute',
     bottom: -56,
     left: 0,
     right: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "transparent",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
   },
   text: {
-    fontWeight: "700",
+    fontWeight: '700',
     color: variables.palette.white,
   },
   button: {
@@ -83,7 +83,7 @@ const baseStyles = StyleSheet.create({
     paddingBottom: 16,
     borderRadius: 24,
   },
-});
+})
 
 const backgroundColorStyles = StyleSheet.create({
   info: {
@@ -95,7 +95,7 @@ const backgroundColorStyles = StyleSheet.create({
   error: {
     backgroundColor: variables.palette.pink,
   },
-});
+})
 
 const textColorStyles = StyleSheet.create({
   info: {
@@ -107,6 +107,6 @@ const textColorStyles = StyleSheet.create({
   error: {
     color: variables.palette.white,
   },
-});
+})
 
-export default memo(Toast);
+export default memo(Toast)

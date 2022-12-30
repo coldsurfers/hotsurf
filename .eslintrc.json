@@ -26,14 +26,11 @@
           "tsx": "never"
         }
     ],
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off"
   },
   "ignorePatterns": [
-    "node_modules",
-    "build",
-    "dist",
-    "public",
-    "gql/resolvers-types.ts"
+    "node_modules"
   ],
   "settings": {
     "import/resolver": {

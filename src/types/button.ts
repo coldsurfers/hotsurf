@@ -1,5 +1,5 @@
 export type ButtonColorProp =
-  | "transparent"
-  | "transparentDarkGray"
-  | "white"
-  | "pink";
+  | 'transparent'
+  | 'transparentDarkGray'
+  | 'white'
+  | 'pink'
