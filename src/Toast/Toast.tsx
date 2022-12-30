@@ -1,4 +1,4 @@
-import { variables } from "@fstvllife/design-token";
+import { variables } from "lib/tokens/ts/variables";
 import React, { memo, useEffect, useRef, useState } from "react";
 import { Animated, Pressable, StyleSheet } from "react-native";
 import { Text } from "../Text";

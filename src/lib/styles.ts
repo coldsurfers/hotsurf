@@ -1,6 +1,7 @@
-import { variables } from "@fstvllife/design-token";
 import { StyleSheet } from "react-native";
+import { variables } from "./tokens/ts/variables";
 
+// eslint-disable-next-line import/prefer-default-export
 export const buttonBackgroundColorStyles = StyleSheet.create({
   transparent: {
     backgroundColor: "transparent",

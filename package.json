@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
+    "react-native": "^0.70.6",
     "rollup": "^2.78.0",
     "ts-node": "^10.9.1"
   },
