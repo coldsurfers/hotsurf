@@ -4,11 +4,11 @@ import formatters from "./formatter";
 const dict = StyleDictionary.registerFormat(
   formatters["typescript/object"]
 ).extend({
-  source: ["src/tokens/tokens.json"],
+  source: ["src/lib/token-builder/tokens.json"],
   platforms: {
     scss: {
       transformGroup: "scss",
-      buildPath: "build/scss/",
+      buildPath: "src/lib/tokens/scss/",
       files: [
         {
           destination: "variables.scss",
@@ -18,7 +18,7 @@ const dict = StyleDictionary.registerFormat(
     },
     css: {
       transformGroup: "css",
-      buildPath: "build/css/",
+      buildPath: "src/lib/tokens/css/",
       files: [
         {
           destination: "variables.css",
@@ -27,7 +27,7 @@ const dict = StyleDictionary.registerFormat(
       ],
     },
     ts: {
-      buildPath: "build/ts/",
+      buildPath: "src/lib/tokens/ts/",
       files: [
         {
           destination: "variables.ts",
