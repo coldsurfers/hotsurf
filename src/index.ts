@@ -1,4 +1,4 @@
-import { variables } from 'lib/tokens/ts/variables'
+import { variables } from './lib/tokens/ts/variables'
 
 export * from './Button'
 export * from './IconButton'

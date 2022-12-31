@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from 'react-native'
-import { variables } from 'lib/tokens/ts/variables'
+import { variables } from '../lib/tokens/ts/variables'
 import { ButtonColorProp } from '../types/button'
 import { Text } from '../Text'
 import { buttonBackgroundColorStyles } from '../lib/styles'

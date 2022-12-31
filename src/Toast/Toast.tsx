@@ -1,6 +1,6 @@
-import { variables } from 'lib/tokens/ts/variables'
 import React, { memo, useEffect, useRef, useState } from 'react'
 import { Animated, Pressable, StyleSheet } from 'react-native'
+import { variables } from '../lib/tokens/ts/variables'
 import { Text } from '../Text'
 
 interface Props {

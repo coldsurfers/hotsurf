@@ -1,10 +1,10 @@
-import { variables } from 'lib/tokens/ts/variables'
 import React, { memo, useCallback, useState } from 'react'
 import {
   StyleSheet,
   TextInput as RNTextInput,
   TextInputProps,
 } from 'react-native'
+import { variables } from '../lib/tokens/ts/variables'
 
 interface Props extends TextInputProps {}
 

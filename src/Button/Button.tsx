@@ -6,7 +6,7 @@ import {
   StyleProp,
   ViewStyle,
 } from 'react-native'
-import { variables } from 'lib/tokens/ts/variables'
+import { variables } from '../lib/tokens/ts/variables'
 import { Text } from '../Text'
 import { ButtonColorProp } from '../types/button'
 import { buttonBackgroundColorStyles } from '../lib/styles'
