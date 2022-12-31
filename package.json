@@ -1,12 +1,9 @@
 {
   "name": "fstvllife-design-system",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist/index.js",
-    "dist/index.web.js"
-  ],
+  "files": ["dist"],
   "license": "MIT",
   "scripts": {
     "rollup:native": "rollup -c ./rollup.config.native.js",
