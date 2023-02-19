@@ -1,5 +1,10 @@
 import React, { memo, useEffect, useRef, useState } from 'react'
-import { Animated, Pressable, StyleSheet } from 'react-native'
+import {
+  Animated,
+  GestureResponderEvent,
+  Pressable,
+  StyleSheet,
+} from 'react-native'
 import { variables } from '../lib/tokens/ts/variables'
 import { Text } from '../Text'
 
@@ -7,33 +12,59 @@ interface Props {
   type: 'info' | 'warning' | 'error'
   message: string
   visible: boolean
+  animationTimingUp: number
+  animationTimingDown: number
+  animationUpToValue: number
+  animationDownToValue: number
+  useNativeDriver?: boolean
+  onPress?: (event: GestureResponderEvent) => void
 }
 
-const Toast = ({ type, message, visible }: Props) => {
-  const wrapperAnimationValue = useRef(new Animated.Value(56)).current
+const Toast = ({
+  type,
+  message,
+  visible,
+  animationTimingUp,
+  animationTimingDown,
+  animationUpToValue,
+  animationDownToValue,
+  useNativeDriver = false,
+  onPress,
+}: Props) => {
+  const animationTranslateY = useRef(
+    new Animated.Value(animationDownToValue)
+  ).current
   const [localVisible, setLocalVisible] = useState<boolean>(false)
 
   useEffect(() => {
     if (visible) {
-      Animated.timing(wrapperAnimationValue, {
-        toValue: -112,
-        duration: 600,
-        useNativeDriver: false,
+      Animated.timing(animationTranslateY, {
+        toValue: animationUpToValue,
+        duration: animationTimingUp,
+        useNativeDriver,
       }).start(() => {
         setLocalVisible(true)
       })
     } else {
-      Animated.timing(wrapperAnimationValue, {
-        toValue: 56,
-        duration: 600,
-        useNativeDriver: false,
+      Animated.timing(animationTranslateY, {
+        toValue: animationDownToValue,
+        duration: animationTimingDown,
+        useNativeDriver,
       }).start(() => {
         setTimeout(() => {
           setLocalVisible(false)
-        }, 600)
+        }, animationTimingDown)
       })
     }
-  }, [visible, wrapperAnimationValue])
+  }, [
+    animationDownToValue,
+    animationTimingDown,
+    animationTimingUp,
+    animationUpToValue,
+    useNativeDriver,
+    visible,
+    animationTranslateY,
+  ])
 
   if (!localVisible && !visible) {
     return null
@@ -44,16 +75,19 @@ const Toast = ({ type, message, visible }: Props) => {
       style={[
         baseStyles.wrapper,
         {
+          bottom: animationDownToValue,
+        },
+        {
           transform: [
             {
-              translateY: wrapperAnimationValue,
+              translateY: animationTranslateY,
             },
           ],
         },
       ]}
     >
       <Pressable
-        onPress={() => {}}
+        onPress={onPress}
         style={[backgroundColorStyles[type], baseStyles.button]}
       >
         <Text style={[baseStyles.text, textColorStyles[type]]}>{message}</Text>
@@ -65,7 +99,6 @@ const Toast = ({ type, message, visible }: Props) => {
 const baseStyles = StyleSheet.create({
   wrapper: {
     position: 'absolute',
-    bottom: -56,
     left: 0,
     right: 0,
     alignItems: 'center',
