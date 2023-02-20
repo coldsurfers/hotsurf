@@ -1,9 +1,9 @@
-import React, { memo, useEffect, useRef, useState } from 'react'
+import React, { memo, useCallback } from 'react'
 import {
-  Animated,
   GestureResponderEvent,
   Pressable,
   StyleSheet,
+  View,
 } from 'react-native'
 import { variables } from '../lib/tokens/ts/variables'
 import { Text } from '../Text'
@@ -11,96 +11,34 @@ import { Text } from '../Text'
 interface Props {
   type: 'info' | 'warning' | 'error'
   message: string
-  visible: boolean
-  animationTimingUp: number
-  animationTimingDown: number
-  animationUpToValue: number
-  animationDownToValue: number
-  useNativeDriver?: boolean
   onPress?: (event: GestureResponderEvent) => void
+  autoCloseOnPress?: boolean
 }
 
-const Toast = ({
-  type,
-  message,
-  visible,
-  animationTimingUp,
-  animationTimingDown,
-  animationUpToValue,
-  animationDownToValue,
-  useNativeDriver = false,
-  onPress,
-}: Props) => {
-  const animationTranslateY = useRef(
-    new Animated.Value(animationDownToValue)
-  ).current
-  const [localVisible, setLocalVisible] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (visible) {
-      Animated.timing(animationTranslateY, {
-        toValue: animationUpToValue,
-        duration: animationTimingUp,
-        useNativeDriver,
-      }).start(() => {
-        setLocalVisible(true)
-      })
-    } else {
-      Animated.timing(animationTranslateY, {
-        toValue: animationDownToValue,
-        duration: animationTimingDown,
-        useNativeDriver,
-      }).start(() => {
-        setTimeout(() => {
-          setLocalVisible(false)
-        }, animationTimingDown)
-      })
-    }
-  }, [
-    animationDownToValue,
-    animationTimingDown,
-    animationTimingUp,
-    animationUpToValue,
-    useNativeDriver,
-    visible,
-    animationTranslateY,
-  ])
-
-  if (!localVisible && !visible) {
-    return null
-  }
+const Toast = ({ type, message, onPress }: Props) => {
+  const handlePress = useCallback(
+    (e: GestureResponderEvent) => {
+      if (onPress) {
+        onPress(e)
+      }
+    },
+    [onPress]
+  )
 
   return (
-    <Animated.View
-      style={[
-        baseStyles.wrapper,
-        {
-          bottom: animationDownToValue,
-        },
-        {
-          transform: [
-            {
-              translateY: animationTranslateY,
-            },
-          ],
-        },
-      ]}
-    >
+    <View style={baseStyles.wrapper}>
       <Pressable
-        onPress={onPress}
+        onPress={handlePress}
         style={[backgroundColorStyles[type], baseStyles.button]}
       >
         <Text style={[baseStyles.text, textColorStyles[type]]}>{message}</Text>
       </Pressable>
-    </Animated.View>
+    </View>
   )
 }
 
 const baseStyles = StyleSheet.create({
   wrapper: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
