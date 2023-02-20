@@ -1,73 +1,44 @@
-import React, { memo, useEffect, useRef, useState } from 'react'
-import { Animated, Pressable, StyleSheet } from 'react-native'
+import React, { memo, useCallback } from 'react'
+import {
+  GestureResponderEvent,
+  Pressable,
+  StyleSheet,
+  View,
+} from 'react-native'
 import { variables } from '../lib/tokens/ts/variables'
 import { Text } from '../Text'
 
 interface Props {
   type: 'info' | 'warning' | 'error'
   message: string
-  visible: boolean
+  onPress?: (event: GestureResponderEvent) => void
+  autoCloseOnPress?: boolean
 }
 
-const Toast = ({ type, message, visible }: Props) => {
-  const wrapperAnimationValue = useRef(new Animated.Value(56)).current
-  const [localVisible, setLocalVisible] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (visible) {
-      Animated.timing(wrapperAnimationValue, {
-        toValue: -112,
-        duration: 600,
-        useNativeDriver: false,
-      }).start(() => {
-        setLocalVisible(true)
-      })
-    } else {
-      Animated.timing(wrapperAnimationValue, {
-        toValue: 56,
-        duration: 600,
-        useNativeDriver: false,
-      }).start(() => {
-        setTimeout(() => {
-          setLocalVisible(false)
-        }, 600)
-      })
-    }
-  }, [visible, wrapperAnimationValue])
-
-  if (!localVisible && !visible) {
-    return null
-  }
+const Toast = ({ type, message, onPress }: Props) => {
+  const handlePress = useCallback(
+    (e: GestureResponderEvent) => {
+      if (onPress) {
+        onPress(e)
+      }
+    },
+    [onPress]
+  )
 
   return (
-    <Animated.View
-      style={[
-        baseStyles.wrapper,
-        {
-          transform: [
-            {
-              translateY: wrapperAnimationValue,
-            },
-          ],
-        },
-      ]}
-    >
+    <View style={baseStyles.wrapper}>
       <Pressable
-        onPress={() => {}}
+        onPress={handlePress}
         style={[backgroundColorStyles[type], baseStyles.button]}
       >
         <Text style={[baseStyles.text, textColorStyles[type]]}>{message}</Text>
       </Pressable>
-    </Animated.View>
+    </View>
   )
 }
 
 const baseStyles = StyleSheet.create({
   wrapper: {
-    position: 'absolute',
-    bottom: -56,
-    left: 0,
-    right: 0,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
