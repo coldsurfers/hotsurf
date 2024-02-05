@@ -1,6 +1,6 @@
 {
-  "name": "fstvllife-design-system",
-  "version": "0.2.6",
+  "name": "@coldsurfers/hotsurf",
+  "version": "0.2.7",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": ["dist"],
@@ -54,5 +54,8 @@
       "yarn run lint:fix",
       "bash -c 'yarn typecheck'"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
