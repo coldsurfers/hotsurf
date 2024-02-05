@@ -1,5 +1,4 @@
 import React, {
-  ReactNode,
   forwardRef,
   useCallback,
   useImperativeHandle,
@@ -16,22 +15,18 @@ const { palette } = variables
 
 interface Props {
   onPressLoginButton: (params: { email: string; password: string }) => void
-  isLoading?: boolean
   withRequestButtonUI?: boolean
   onPressRequestButtonUI?: () => void
-  errorMessage?: string
-  LoadingUI?: ReactNode
+  formTitle?: string
 }
 
 const LoginForm = forwardRef<LoginFormRefHandle, Props>(
   (
     {
       onPressLoginButton,
-      isLoading,
       withRequestButtonUI,
       onPressRequestButtonUI,
-      errorMessage,
-      LoadingUI,
+      formTitle,
     },
     ref
   ) => {
@@ -56,7 +51,7 @@ const LoginForm = forwardRef<LoginFormRefHandle, Props>(
             marginBottom: 14,
           }}
         >
-          Billets 어드민
+          {formTitle}
         </Text>
         <TextInput
           value={email}
