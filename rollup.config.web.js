@@ -1,5 +1,8 @@
 const typescript = require('rollup-plugin-typescript2')
 const alias = require('@rollup/plugin-alias')
+const path = require('path')
+
+const projectRootDir = path.resolve(__dirname)
 
 module.exports = {
   input: 'src/index.ts',
@@ -14,9 +17,8 @@ module.exports = {
       tsconfig: './tsconfig.json',
     }),
     alias({
-      entries: {
-        'react-native': '../../alias',
-      },
+      find: 'react-native',
+      replacement: path.resolve(projectRootDir, './alias.js'),
     }),
   ],
 }

@@ -5,10 +5,10 @@ import React, {
   useState,
 } from 'react'
 import { View } from 'react-native'
-import { Button } from '../Button'
-import { variables } from '../lib/tokens/ts/variables'
-import { Text } from '../Text'
-import { TextInput } from '../TextInput'
+import { Button } from '../../Button'
+import { variables } from '../../lib/tokens/ts/variables'
+import { Text } from '../../Text'
+import { TextInput } from '../../TextInput'
 import { LoginFormRefHandle } from './types'
 
 const { palette } = variables
@@ -17,6 +17,7 @@ interface Props {
   onPressLoginButton: (params: { email: string; password: string }) => void
   withRequestButtonUI?: boolean
   onPressRequestButtonUI?: () => void
+  onPressCreateAccountButtonUI?: () => void
   formTitle?: string
 }
 
@@ -26,6 +27,7 @@ const LoginForm = forwardRef<LoginFormRefHandle, Props>(
       onPressLoginButton,
       withRequestButtonUI,
       onPressRequestButtonUI,
+      onPressCreateAccountButtonUI,
       formTitle,
     },
     ref
@@ -72,6 +74,11 @@ const LoginForm = forwardRef<LoginFormRefHandle, Props>(
             onPressLoginButton({ email, password })
           }, [email, onPressLoginButton, password])}
           style={{ marginTop: 14 }}
+        />
+        <Button
+          text="계정 만들기"
+          onPress={onPressCreateAccountButtonUI}
+          style={{ marginTop: 14, backgroundColor: palette.black }}
         />
         {withRequestButtonUI && (
           <Button
