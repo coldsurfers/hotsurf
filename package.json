@@ -1,15 +1,25 @@
 {
   "name": "@coldsurfers/hotsurf",
-  "version": "0.2.8",
+  "version": "0.2.9-rc.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": ["dist"],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./*.css": {
+      "import": "./dist/css/*.css",
+      "require": "./dist/css/*.css"
+    }
+  },
   "license": "MIT",
   "scripts": {
     "rollup:native": "rollup -c ./rollup.config.native.js",
     "rollup:web": "rollup -c ./rollup.config.web.js",
     "rollup:all": "yarn rollup:native && yarn rollup:web",
-    "build": "rm -rf dist && yarn rollup:all && tsc --emitDeclarationOnly",
+    "build": "rm -rf dist && yarn rollup:all && tsc --emitDeclarationOnly && cp -R ./src/css ./dist",
     "build:token": "ts-node src/lib/token-builder/build.ts",
     "lint": "eslint --cache \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "yarn lint --fix",
