@@ -1,6 +1,6 @@
 {
   "name": "@coldsurfers/hotsurf",
-  "version": "0.2.8-rc.5",
+  "version": "0.2.8",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": ["dist"],
