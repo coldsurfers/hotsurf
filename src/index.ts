@@ -8,3 +8,4 @@ export * from './Toast'
 export * from './Spinner'
 export const { palette } = variables
 export * from './LoginForm'
+export * from './Modal'
