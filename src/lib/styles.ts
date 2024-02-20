@@ -16,4 +16,7 @@ export const buttonBackgroundColorStyles = StyleSheet.create({
   pink: {
     backgroundColor: variables.palette.pink,
   },
+  indigo: {
+    backgroundColor: variables.palette.indigo,
+  },
 })
