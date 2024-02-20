@@ -1,9 +1,3 @@
-const { Format } = require('style-dictionary')
-
-const formatterName = 'typescript/object'
-
-// type Formatters = Record<typeof formatterName, Format>
-
 const formatters = {
   'typescript/object': {
     name: 'typescript/object',
