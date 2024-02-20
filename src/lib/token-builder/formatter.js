@@ -1,25 +1,17 @@
-import { Format } from 'style-dictionary'
+const { Format } = require('style-dictionary')
 
-const formatterName = 'typescript/object' as const
+const formatterName = 'typescript/object'
 
-type Formatters = Record<typeof formatterName, Format>
+// type Formatters = Record<typeof formatterName, Format>
 
-const formatters: Formatters = {
+const formatters = {
   'typescript/object': {
     name: 'typescript/object',
     formatter: (params) => {
       const { dictionary, file, options, platform } = params
       console.log(dictionary.tokens)
       console.log(dictionary.allTokens)
-      const tokens: Record<
-        string,
-        Record<
-          string,
-          {
-            value: string
-          }
-        >
-      > = {}
+      const tokens = {}
       Object.keys(dictionary.tokens).forEach((category) => {
         tokens[category] = {}
       })
@@ -32,4 +24,4 @@ const formatters: Formatters = {
   },
 }
 
-export default formatters
+module.exports = formatters

@@ -20,7 +20,7 @@
     "rollup:web": "rollup -c ./rollup.config.web.js",
     "rollup:all": "yarn rollup:native && yarn rollup:web",
     "build": "rm -rf dist && yarn rollup:all && tsc --emitDeclarationOnly && cp -R ./src/css ./dist",
-    "build:token": "ts-node src/lib/token-builder/build.ts",
+    "build:token": "node src/lib/token-builder/build.js",
     "lint": "eslint --cache \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "yarn lint --fix",
     "prepare": "husky install",
