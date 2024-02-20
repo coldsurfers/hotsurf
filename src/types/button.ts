@@ -3,3 +3,4 @@ export type ButtonColorProp =
   | 'transparentDarkGray'
   | 'white'
   | 'pink'
+  | 'indigo'

@@ -19,7 +19,13 @@ interface Props {
   disabled?: boolean
 }
 
-const Button = ({ text, onPress, color = 'pink', disabled, style }: Props) => (
+const Button = ({
+  text,
+  onPress,
+  color = 'indigo',
+  disabled,
+  style,
+}: Props) => (
   <TouchableOpacity
     onPress={onPress}
     disabled={disabled}
@@ -45,7 +51,7 @@ const baseStyles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: variables.palette.pink,
+    backgroundColor: variables.palette.indigo,
     paddingLeft: 16,
     paddingRight: 16,
     paddingTop: 16,
@@ -71,6 +77,9 @@ const textColorStyles = StyleSheet.create({
     color: variables.palette.black,
   },
   pink: {
+    color: variables.palette.white,
+  },
+  indigo: {
     color: variables.palette.white,
   },
   disabled: {

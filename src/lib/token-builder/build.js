@@ -1,5 +1,5 @@
-import StyleDictionary from 'style-dictionary'
-import formatters from './formatter'
+const StyleDictionary = require('style-dictionary')
+const formatters = require('./formatter')
 
 const dict = StyleDictionary.registerFormat(
   formatters['typescript/object']
