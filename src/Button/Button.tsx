@@ -45,7 +45,7 @@ const baseStyles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: variables.palette.pink,
+    backgroundColor: variables.palette.indigo,
     paddingLeft: 16,
     paddingRight: 16,
     paddingTop: 16,
