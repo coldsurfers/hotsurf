@@ -22,19 +22,24 @@ const Text = ({ children, weight = 'regular', style, ...others }: Props) => {
 
 const styles = StyleSheet.create({
   thin: {
-    fontFamily: 'NotoSansKR-Thin',
+    // fontFamily: 'NotoSansKR-Thin',
+    fontFamily: 'inherit',
   },
   light: {
-    fontFamily: 'NotoSansKR-Light',
+    // fontFamily: 'NotoSansKR-Light',
+    fontFamily: 'inherit',
   },
   regular: {
-    fontFamily: 'NotoSansKR-Regular',
+    // fontFamily: 'NotoSansKR-Regular',
+    fontFamily: 'inherit',
   },
   medium: {
-    fontFamily: 'NotoSansKR-Medium',
+    // fontFamily: 'NotoSansKR-Medium',
+    fontFamily: 'inherit',
   },
   bold: {
-    fontFamily: 'NotoSansKR-Bold',
+    // fontFamily: 'NotoSansKR-Bold',
+    fontFamily: 'inherit',
   },
 })
 
